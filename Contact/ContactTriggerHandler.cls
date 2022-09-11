@@ -14,30 +14,24 @@ public with sharing class ContactTriggerHandler implements TriggerHandler{
     }
 
     public void beforeInsert(List<Contact> newContacts, Map<Id, SObject> newContactsMap) {
-        helper.setRelatedAccountStatus(newContacts);
-        // helper.doTask2();Re
     }
     public void beforeUpdate(List<Contact> oldContacts, List<Contact> newContacts, Map<Id, sObject> oldContactMap, Map<Id, sObject> newContactMap) {
-
     }
     public void beforeDelete(List<Contact> oldContacts, Map<Id, sObject> oldContactMap) {
-        // helper.doTask5();
-        // helper.doTask1();
     }
     public void afterInsert(List<Contact> newContacts, Map<Id, sObject> newContactMap) {
-        // helper.doTask2();
-        // helper.doTask3();
+        System.debug('Inside helper insert method');
+        helper.setRelatedAccountStatus(newContacts);
     }
     public void afterUpdate(List<Contact> oldContacts, List<Contact> newContacts, Map<Id, sObject> oldContactMap, Map<Id, sObject> newContactMap) {
-        // helper.doTask4();
-        // helper.doTask5();
+        helper.setRelatedAccountStatus(newContacts);
+        System.debug('Inside helper update method');
     }
     public void afterDelete(List<Contact> oldContacts, Map<Id, sObject> oldContactMap) {
-        // helper.doTask3();
-        // helper.doTask1();
+        System.debug('Inside helper delete method');
+        helper.setRelatedAccountStatus(oldContacts);
     }
     public void afterUndelete(List<Contact> newContacts, Map<Id, sObject> newContactMap) {
-        // helper.doTask4();
-        // helper.doTask2();
+
     }
 }
